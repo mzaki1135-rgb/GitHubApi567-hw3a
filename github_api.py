@@ -1,5 +1,5 @@
 """
-GitHub API Assignment HW03
+GitHub API Assignment HW3a
 Author: mzaki1135-rgb
 """
 
@@ -7,18 +7,18 @@ import requests
 
 def get_repos(mzaki1135-rgb):
 
-    url = f"https://api.github.com/users/{mzaki1135-rgb}/repos"
+    url = f"https://api.github.com/users/mzaki1135-rgb/repos"
     response = requests.get(url)
     if response.status_code != 200:
-        raise ValueError(f"Error fetching repos for user '{mzaki1135-rgb}'. Status code: {response.status_code}")
+        raise ValueError(f"Error fetching repos for user 'mzaki1135-rgb'. Status code: {response.status_code}")
     repos_data = response.json()
-    return [repo['name'] for repo in repos_data]
+    return [repo['GitHubApi567-hw3a'] for repo in repos_data]
 
-def get_commit_count(mzaki1135-rgb, repo_name):
-    url = f"https://api.github.com/repos/{mzaki1135-rgb}/{repo_name}/commits"
+def get_commit_count(mzaki1135-rgb, GitHubApi567-hw3a):
+    url = f"https://api.github.com/repos/mzaki1135-rgb/GitHubApi567-hw3a/commits"
     response = requests.get(url)
     if response.status_code != 200:
-        raise ValueError(f"Error fetching commits for repo '{repo_name}'. Status code: {response.status_code}")
+        raise ValueError(f"Error fetching commits for repo 'GitHubApi567-hw3a'. Status code: {response.status_code}")
     commits_data = response.json()
     return len(commits_data)
 
