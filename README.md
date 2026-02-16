@@ -13,5 +13,5 @@ Clone this repository:
 ```bash
 git clone https://github.com/mzaki1135-rgb/GitHubApi567-hw3a.git
 git add README.md
-git commit -m "Add Travis CI badge"
+git commit -m "Trigger Travis CI build"
 git push
