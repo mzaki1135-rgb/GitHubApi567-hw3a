@@ -5,29 +5,29 @@ Author: mzaki1135-rgb
 
 import requests
 
-def get_repos(user_id):
-    """Fetch the list of repositories for a given GitHub user."""
-    url = f"https://api.github.com/users/{user_id}/repos"
+def get_repos(mzaki1135-rgb):
+
+    url = f"https://api.github.com/users/{mzaki1135-rgb}/repos"
     response = requests.get(url)
     if response.status_code != 200:
-        raise ValueError(f"Error fetching repos for user '{user_id}'. Status code: {response.status_code}")
+        raise ValueError(f"Error fetching repos for user '{mzaki1135-rgb}'. Status code: {response.status_code}")
     repos_data = response.json()
     return [repo['name'] for repo in repos_data]
 
-def get_commit_count(user_id, repo_name):
-    url = f"https://api.github.com/repos/{user_id}/{repo_name}/commits"
+def get_commit_count(mzaki1135-rgb, repo_name):
+    url = f"https://api.github.com/repos/{mzaki1135-rgb}/{repo_name}/commits"
     response = requests.get(url)
     if response.status_code != 200:
         raise ValueError(f"Error fetching commits for repo '{repo_name}'. Status code: {response.status_code}")
     commits_data = response.json()
     return len(commits_data)
 
-def github_user_repo_summary(user_id):
+def github_user_repo_summary(mzaki1135-rgb):
     summary = []
     try:
-        repos = get_repos(user_id)
+        repos = get_repos(mzaki1135-rgb)
         for repo in repos:
-            count = get_commit_count(user_id, repo)
+            count = get_commit_count(mzaki1135-rgb, repo)
             summary.append({'repo': repo, 'commits': count})
     except ValueError as e:
         print(e)
@@ -40,6 +40,6 @@ def print_summary(summary):
 
 # Example usage
 if __name__ == "__main__":
-    user_id = "richkempinski"  # Replace with any GitHub user to test
+    user_id = "mzaki1135-rgb" 
     summary = github_user_repo_summary(user_id)
     print_summary(summary)
