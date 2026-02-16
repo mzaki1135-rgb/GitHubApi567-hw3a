@@ -1,3 +1,8 @@
+"""
+Unit tests for GitHub API Assignment HW03
+Author: mzaki1135-rgb
+"""
+
 import unittest
 from github_api import get_repos, get_commit_count, github_user_repo_summary
 
