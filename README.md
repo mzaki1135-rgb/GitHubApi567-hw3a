@@ -9,6 +9,9 @@ The program takes a GitHub user ID as input and returns a summary of all reposit
 
 ## Usage
 
-1. Clone this repository:
+Clone this repository:
 ```bash
 git clone https://github.com/mzaki1135-rgb/GitHubApi567-hw3a.git
+git add README.md
+git commit -m "Add Travis CI badge"
+git push
