@@ -1,6 +1,6 @@
 # GitHub API Assignment HW3a
 
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/mzaki1135-rgb/GitHubApi567-hw3a/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/mzaki1135-rgb/GitHubApi567-hw3a/tree/main)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/mzaki1135-rgb/GitHubApi567-hw3a/tree/HW03b_Mocking.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/mzaki1135-rgb/GitHubApi567-hw3a/tree/HW03b_Mocking)
 
 ## Project Description
 
