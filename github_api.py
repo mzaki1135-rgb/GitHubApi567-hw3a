@@ -1,3 +1,8 @@
+"""
+GitHub API Assignment HW03
+Author: mzaki1135-rgb
+"""
+
 import requests
 
 def get_repos(user_id):
@@ -10,7 +15,6 @@ def get_repos(user_id):
     return [repo['name'] for repo in repos_data]
 
 def get_commit_count(user_id, repo_name):
-    """Fetch the number of commits for a specific repository."""
     url = f"https://api.github.com/repos/{user_id}/{repo_name}/commits"
     response = requests.get(url)
     if response.status_code != 200:
@@ -19,7 +23,6 @@ def get_commit_count(user_id, repo_name):
     return len(commits_data)
 
 def github_user_repo_summary(user_id):
-    """Return a summary of all repos and commit counts for a GitHub user."""
     summary = []
     try:
         repos = get_repos(user_id)
@@ -37,6 +40,6 @@ def print_summary(summary):
 
 # Example usage
 if __name__ == "__main__":
-    user_id = "richkempinski"  # Replace with any GitHub user
+    user_id = "mzaki1135-rgb"  # Replace with any GitHub user to test
     summary = github_user_repo_summary(user_id)
     print_summary(summary)
