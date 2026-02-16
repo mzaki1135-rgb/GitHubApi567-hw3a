@@ -1,4 +1,4 @@
-# GitHub API HW4a
+# GitHub API HW3a
 
 This project retrieves GitHub repositories and counts commits for a given user.
 
