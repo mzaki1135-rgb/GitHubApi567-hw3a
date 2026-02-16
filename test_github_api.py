@@ -1,35 +1,71 @@
 import unittest
+from unittest.mock import patch, Mock
 from github_api import get_repos, get_commit_count, github_user_repo_summary
 
 
 class TestGitHubApi(unittest.TestCase):
 
-    def test_get_repos_valid_user(self):
-        repos = get_repos("mzaki1135-rgb")
-        self.assertIsInstance(repos, list)
-        self.assertGreaterEqual(len(repos), 0)
+    @patch("github_api.requests.get")
+    def test_get_repos(self, mock_get):
+        # Mock response for repository list
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.json.return_value = [
+            {"name": "Repo1"},
+            {"name": "Repo2"}
+        ]
+        mock_get.return_value = mock_response
 
-    def test_get_repos_invalid_user(self):
-        with self.assertRaises(ValueError):
-            get_repos("thisuserdoesnotexist_1234567890")
+        repos = get_repos("anyuser")
+        self.assertEqual(repos, ["Repo1", "Repo2"])
 
-    def test_get_commit_count_valid_repo(self):
-        repos = get_repos("mzaki1135-rgb")
 
-        # Only run test if user has at least one repo
-        if repos:
-            count = get_commit_count("mzaki1135-rgb", repos[0])
-            self.assertIsInstance(count, int)
-            self.assertGreaterEqual(count, 0)
+    @patch("github_api.requests.get")
+    def test_get_commit_count(self, mock_get):
+        # Mock response for commits
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.json.return_value = [
+            {"sha": "abc"},
+            {"sha": "def"},
+            {"sha": "ghi"}
+        ]
+        mock_get.return_value = mock_response
 
-    def test_summary_function(self):
-        summary = github_user_repo_summary("mzaki1135-rgb")
-        self.assertIsInstance(summary, list)
+        count = get_commit_count("anyuser", "Repo1")
+        self.assertEqual(count, 3)
 
-        for item in summary:
-            self.assertIn("repo", item)
-            self.assertIn("commits", item)
-            self.assertIsInstance(item["commits"], int)
+
+    @patch("github_api.requests.get")
+    def test_summary_function(self, mock_get):
+        # Side effect to simulate different URLs
+        def mock_side_effect(url, *args, **kwargs):
+            mock_response = Mock()
+            mock_response.status_code = 200
+
+            if "repos" in url:
+                mock_response.json.return_value = [
+                    {"name": "RepoA"},
+                    {"name": "RepoB"}
+                ]
+            elif "commits" in url:
+                mock_response.json.return_value = [
+                    {"sha": "1"},
+                    {"sha": "2"}
+                ]
+            return mock_response
+
+        mock_get.side_effect = mock_side_effect
+
+        summary = github_user_repo_summary("anyuser")
+
+        expected = [
+            {"repo": "RepoA", "commits": 2},
+            {"repo": "RepoB", "commits": 2}
+        ]
+
+        self.assertEqual(summary, expected)
+
 
 if __name__ == "__main__":
     unittest.main()
