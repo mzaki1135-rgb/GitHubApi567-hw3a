@@ -12,3 +12,4 @@ version: 2.1
         - run: 
           name: Run unit tests
           command: python -m unittest discover
+          
