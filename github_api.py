@@ -1,8 +1,3 @@
-"""
-GitHub API Assignment HW3a
-Author: mzaki1135-rgb
-"""
-
 import requests
 
 def get_repos(mzaki1135-rgb):
