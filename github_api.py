@@ -40,6 +40,6 @@ def print_summary(summary):
 
 # Example usage
 if __name__ == "__main__":
-    user_id = "mzaki1135-rgb"  # Replace with any GitHub user to test
+    user_id = "richkempinski"  # Replace with any GitHub user to test
     summary = github_user_repo_summary(user_id)
     print_summary(summary)
