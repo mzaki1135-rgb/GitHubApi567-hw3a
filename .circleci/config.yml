@@ -7,9 +7,9 @@ version: 2.1
       steps:
         - checkout 
         - run: 
-          name: Install dependencies
-          command: pip install requests
+            name: Install dependencies
+            command: pip install requests
         - run: 
-          name: Run unit tests
-          command: python -m unittest discover
+            name: Run unit tests
+            command: python -m unittest discover
           
