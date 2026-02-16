@@ -9,21 +9,21 @@ from github_api import get_repos, get_commit_count, github_user_repo_summary
 class TestGitHubApi(unittest.TestCase):
 
     def test_get_repos_valid_user(self):
-        repos = get_repos("richkempinski")
+        repos = get_repos("mzaki1135-rgb")
         self.assertIsInstance(repos, list)
-        self.assertIn("hellogitworld", repos)
+        self.assertIn("GitHubApi567-hw3a", repos)
 
     def test_get_repos_invalid_user(self):
         with self.assertRaises(ValueError):
             get_repos("thisuserdoesnotexist12345")
 
     def test_get_commit_count_valid_repo(self):
-        count = get_commit_count("richkempinski", "hellogitworld")
+        count = get_commit_count("mzaki1135-rgb", "GitHubApi567-hw3a")
         self.assertIsInstance(count, int)
         self.assertGreaterEqual(count, 0)
 
     def test_summary_function(self):
-        summary = github_user_repo_summary("richkempinski")
+        summary = github_user_repo_summary("mzaki1135-rgb")
         self.assertIsInstance(summary, list)
         if summary:
             self.assertIn("repo", summary[0])
